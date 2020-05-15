@@ -33,9 +33,20 @@ $foto = new fotografi();
 	  if($_POST['submit']=='kalkulasikan'){
         $focal = $_POST["focal"];
         $aperture = $_POST["aperture"];
-        $hasilfstop = $foto->fstopperhitungan($focal, $aperture);
-        
-	    echo "fstop dari lensa tersebut adalah: $hasilfstop";
+		$focal = intval($focal);
+		$aperture = intval($focal);
+		
+		if ($focal == 0)
+			echo "Nilai tidak boleh kosong atau 0! masukkan nilai yang benar";
+			
+		elseif ($aperture == 0)
+			echo "Nilai tidak boleh kosong atau 0! masukkan nilai yang benar";
+			
+		else
+        {
+			$hasilfstop = $foto->perhitunganfstop($focal);
+        	echo "shutter yang diperlukan adalah: $hasilfstop ";
+		}
 	  }
     ?>
 <p>&nbsp;</p>
