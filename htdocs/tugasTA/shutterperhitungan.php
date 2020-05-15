@@ -28,9 +28,16 @@ include("fotografi.php");
 $foto = new fotografi();
 	  if($_POST['submit']=='kalkulasikan'){
         $focal = $_POST["focal"];
-        $hasilshutter = $foto->shutterperhitungan($focal);
-        
-	    echo "shutter yang diperlukan adalah: $hasilshutter s";
+		$focal = intval($focal);
+
+		if ($focal == 0)
+			echo "Nilai tidak boleh kosong atau 0! masukkan nilai yang benar";
+			
+		else
+        {
+			$hasilshutter = $foto->perhitunganshutter($focal);
+        	echo "shutter yang diperlukan adalah: $hasilshutter s";
+		}
 	  }
     ?>
 <p>&nbsp;</p>
