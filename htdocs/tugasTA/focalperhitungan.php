@@ -45,9 +45,17 @@ $foto = new fotografi();
 	  if($_POST['submit']=='kalkulasikan'){
         $focal = $_POST["focal"];
         $crop = $_POST["crop"];
-        $hasilfocal = $foto->focalperhitungan($focal, $crop);
-        
-	    echo "focal dari lensa tersebut adalah: $hasilfocal";
+		$focal = intval($focal);
+		
+		if ($focal == 0)
+			echo "Nilai tidak boleh kosong atau 0! masukkan nilai yang benar";
+			
+		else
+        {
+			$hasilfocal = $foto->perhitunganfocal($focal);
+        	echo "shutter yang diperlukan adalah: $hasilfocal mm";
+		}
+
 	  }
     ?>
 <p>&nbsp;</p>
